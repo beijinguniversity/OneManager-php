@@ -814,8 +814,11 @@ function needUpdate()
 
 function output($body, $statusCode = 200, $headers = ['Content-Type' => 'text/html'], $isBase64Encoded = false)
 {
+    global $drive;
+    if (get_class($drive)=='Aliyundrive') {
     //$headers['Referrer-Policy'] = 'same-origin';
     $headers['Referrer-Policy'] = 'no-referrer';
+    }
     return [
         'isBase64Encoded' => $isBase64Encoded,
         'statusCode' => $statusCode,
